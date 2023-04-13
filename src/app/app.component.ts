@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Book } from './book';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'bookmonkey-client';
 
-  book = {
+  public book : Book = {
     title : 'How to write an Essay',
-    author: 'Singh',
+    author: 'Singh Simran',
     abstract: `Lorem ipsum, dolor sit amet consectetur adipisicing elit.
     Obcaecati at quos dolor neque corrupti aspernatur adipisci laudantium fuga numquam molestiae`
+  }
+  
+  handleEmitFromChild(evt:Book){
+    console.log(evt);
   }
 }

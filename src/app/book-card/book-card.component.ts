@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Book } from '../book';
 @Component({
   selector: 'app-book-card',
   templateUrl: './book-card.component.html',
@@ -7,10 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class BookCardComponent {
 
-  @Input() content: any;
-  
+  @Input() content!: Book;
+  @Output() detailClick = new EventEmitter<Book>();
+
   customStyle = {
     color: 'green'
   };
+
+  handleDetailClicked(): void{
+    this.detailClick.emit(this.content);
+  }
   
 }

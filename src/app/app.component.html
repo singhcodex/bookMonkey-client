@@ -1,3 +1,6 @@
 <h1 class="text-center">{{title}} app is running!</h1>
 
-<app-book-card [content]="book"></app-book-card>
+<app-book-card 
+    [content]="book"
+    (detailClick)="handleEmitFromChild($event)"
+></app-book-card>
