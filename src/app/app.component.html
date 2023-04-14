@@ -1,6 +1,6 @@
 <h1 class="text-center">{{title}} app is running!</h1>
 
-<app-book-card 
+<app-book-card *ngFor="let book of books" 
     [content]="book"
     (detailClick)="handleEmitFromChild($event)"
 ></app-book-card>
