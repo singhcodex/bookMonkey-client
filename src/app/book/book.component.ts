@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
+import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book',
@@ -8,22 +10,29 @@ import { BookApiService } from './book-api.service';
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  public books: Book[] = [];
+  
+  public books$!: Observable<Book[]>;
+
+  private subscription = Subscription.EMPTY;
 
   title = 'bookmonkey-client';
   bookSearchTerm: string = '';
 
- constructor(private bookApi: BookApiService){}
+ constructor(private router: Router, private bookApi: BookApiService){}
+ 
 
   ngOnInit() {
-    this.books = this.bookApi.getAll();
-  }
-
-  handleEmitFromChild(evt:Book){
-    console.log(evt);
+   this.books$ = this.bookApi.getAll();
   }
 
   updateBookList(input: Event){
     this.bookSearchTerm = (input.target as HTMLInputElement).value;
+   // this.books$ = this.bookApi.searchByTitle(this.bookSearchTerm);
   }
+
+  goToBookDetails(book: Book){
+    this.router.navigate(['books', 'details', book.isbn])
+ }
+
+  
 }

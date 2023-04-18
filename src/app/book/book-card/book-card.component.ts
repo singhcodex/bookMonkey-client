@@ -14,7 +14,8 @@ export class BookCardComponent {
     color: 'green'
   };
 
-  handleDetailClicked(): void{
+  handleDetailClicked(click: MouseEvent): void{
+    click.preventDefault();
     this.detailClick.emit(this.content);
   }
   
