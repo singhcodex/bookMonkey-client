@@ -34,4 +34,8 @@ export class BookApiService {
     //return this.http.get<Book>(`${this.endpoint}/books/${isbn}`);
     return this.http.get<Book>(`${this.endpoint}/books/${isbn}`);
   }
+
+  updateBook(book: Book): Observable<Book>{
+    return this.http.put<Book>(`${this.endpoint}/books/${book.isbn}`, book);
+  }
 }

@@ -1,0 +1,28 @@
+
+    <form #editBook="ngForm" *ngIf="book$ | async as book" class="form w-75 m-auto" (ngSubmit)="saveChanges(book)">
+        <legend class="text-center">Edit Book</legend>
+
+        <div class="form-group mb-2">
+            <label class="form-label"> Title</label>        
+            <input class="form-control" type="text" [(ngModel)]="book.title" name="title" #title="ngModel" required>
+        </div>
+        <div class="alert alert-danger" [hidden]="!title.errors?.['required'] || title.pristine">
+            Dieses Feld ist erforderlich.
+        </div>
+
+        <div class="form-group mb-2">
+            <label class="form-label"> Author</label>
+            <input class="form-control" type="text" [(ngModel)]="book.author" name="author" #author="ngModel" required>
+        </div>
+        <div class="alert alert-danger" [hidden]="!author.errors?.['required'] || author.pristine">
+            Dieses Feld ist erforderlich.
+        </div>
+       <div class="form-group mb-2">
+        <label class="form-label"> abstract</label>
+        <textarea class="form-control" type="textarea" [(ngModel)]="book.abstract" name="abstract" #abstract="ngModel">
+
+        </textarea>
+       </div>
+      
+        <button class="btn btn-success" [disabled]="editBook.invalid">Save</button>
+    </form>

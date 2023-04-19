@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -22,6 +23,7 @@ import { NavigationComponent } from './navigation/navigation.component';
         // BookModule,
         HttpClientModule,
         AppRoutingModule
+        
     ]
 })
 export class AppModule { }

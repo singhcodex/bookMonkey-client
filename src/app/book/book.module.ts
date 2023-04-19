@@ -5,7 +5,9 @@ import { BookCardComponent } from './book-card/book-card.component';
 import { BookFilterPipe } from './book-filter/book-filter.pipe';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookRoutingModule } from './book-routing.module';
-
+import { BookEditComponent } from './book-edit/book-edit.component';
+import {FormsModule} from '@angular/forms';
+import { BookNewComponent } from './book-new/book-new.component';
 
 
 @NgModule({
@@ -13,11 +15,14 @@ import { BookRoutingModule } from './book-routing.module';
     BookComponent,
     BookCardComponent,
     BookFilterPipe,
-    BookDetailComponent
+    BookDetailComponent,
+    BookEditComponent,
+    BookNewComponent
   ],
   imports: [
     CommonModule,
-    BookRoutingModule
+    BookRoutingModule,
+    FormsModule
   ],
   exports: [
     BookComponent
