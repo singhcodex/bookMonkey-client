@@ -1,1 +1,34 @@
-<p>book-new works!</p>
+<form [formGroup]="myBook" class="w-50 m-auto" (ngSubmit)="createBook()">
+    <legend class="text-center">Create New Book</legend>
+    <div class="form-group mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" formControlName="title" placeholder="Enter the Book Title...">
+    </div>
+
+    <small class="text-danger" *ngIf="(myBook.get('title')?.touched || myBook.get('title')?.dirty) && myBook.get('title')?.hasError('required')">
+        This Field is required!
+    </small>
+    <div class="form-group mb-3">
+        <label class="form-label">Author</label>
+        <input type="text" class="form-control" formControlName="author" placeholder="Enter the Book Author...">
+    </div>
+    
+    <div class="form-group mb-3">
+        <label class="form-label">Cover</label>
+        <input type="file" class="form-control" formControlName="cover" placeholder="">
+    </div>
+    
+    <div class="form-group mb-3">
+        <label class="form-label">Isbn</label>
+        <input type="text" class="form-control" formControlName="isbn" placeholder="Enter the Isbn...">
+    </div>
+    <small class="text-danger" *ngIf="(myBook.get('isbn')?.touched || myBook.get('isbn')?.dirty) && myBook.get('isbn')?.hasError('required')">
+        This Field is required!
+    </small>
+    <div class="form-group mb-3">
+        <label class="form-label">Abstract</label>
+        <textarea type="textarea" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-success" [disabled]="myBook.invalid">Create Book</button>
+    
+</form>

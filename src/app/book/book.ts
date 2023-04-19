@@ -3,7 +3,5 @@ export interface Book {
     author: string,
     abstract: string,
     isbn: string,
-    cover: string,
-    numPages: number,
-    subtitle: string
+    cover: string
 }
